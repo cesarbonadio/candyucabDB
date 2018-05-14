@@ -1,6 +1,6 @@
 create table rol(
 
- codigo int,
+ codigo numeric(2),
  descripcion varchar(80) not null unique,
 
  /*constraints*/
@@ -10,7 +10,7 @@ create table rol(
 
 create table privilegio(
 
- codigo int,
+ codigo numeric(2),
  descripcion varchar(80) not null unique,
 
  /*constraints*/
@@ -20,9 +20,9 @@ create table privilegio(
 
 create table rol_privilegio(
 
-  codigo int,
-  c_rol int,
-  c_priv int,
+  codigo numeric(3),
+  c_rol numeric(2),
+  c_priv numeric(2),
 
   /*constraints*/
   constraint pk_rol_privilegio primary key (codigo,c_rol,c_priv),
@@ -33,11 +33,11 @@ create table rol_privilegio(
 
 create table usuario(
 
- id int,
+ id numeric(8),
  username varchar(20) not null unique,
  password varchar(20) not null,
- puntos int not null,
- fk_rol int not null,
+ puntos numeric(18) not null,
+ fk_rol numeric(2) not null,
 
  /*constraints*/
  constraint pk_usuario primary key (id),
@@ -50,10 +50,10 @@ create table usuario(
 create table lugar(
 
 
- codigo bigint,
+ codigo numeric(10),
  nombre varchar(30) not null,
  tipo varchar(20) not null,
- fk_lugar bigint,
+ fk_lugar numeric(10),
 
  /*constraints*/
  constraint pk_lugar primary key (codigo),
@@ -71,9 +71,9 @@ create table juridico(
    d_social varchar(50) not null,
    r_social varchar(50) not null,
    pagina_web varchar(40) unique,
-   capital bigint not null,
-   fk_lugar bigint not null,
-   fk_usuario bigint not null,
+   capital numeric(20,2) not null,
+   fk_lugar numeric(10) not null,
+   fk_usuario numeric(8) not null,
 
    /*constraints*/
    constraint pk_juridico primary key (rif),
@@ -83,20 +83,20 @@ create table juridico(
 );
 
 
-create table natural(
+create table naturale(
 
-   cedula bigint,
+   cedula numeric(9),
    rif varchar(40) not null unique,
    correo varchar(40) not null unique,
    nombre varchar(40) not null,
    apellido varchar(40) not null,
-   fk_lugar bigint not null,
-   fk_usuario bigint not null,
+   fk_lugar numeric(10) not null,
+   fk_usuario numeric(8) not null,
 
    /*constraints*/
-   constraint pk_natural primary key (cedula),
-   constraint fk_natural_lugar foreign key (fk_lugar) references lugar(codigo),
-   constraint fk_natural_usuario foreign key (fk_usuario) references usuaro(id)
+   constraint pk_naturale primary key (cedula),
+   constraint fk_naturale_lugar foreign key (fk_lugar) references lugar(codigo),
+   constraint fk_naturale_usuario foreign key (fk_usuario) references usuario(id)
 
 
 );
@@ -104,15 +104,15 @@ create table natural(
 
 create table telefono(
 
-   valor bigint,
+   valor numeric(11),
    tipo varchar(5),
    fk_juridico varchar(40),
-   fk_natural bigint,
+   fk_naturale numeric(9),
 
    /*constraints*/
    constraint pk_telefono primary key (valor),
    constraint fk_telefono_juridico foreign key (fk_juridico) references juridico(rif),
-   constraint fk_telefono_natural foreign key (fk_natural) references natural(cedula)
+   constraint fk_telefono_naturale foreign key (fk_naturale) references naturale(cedula)
 
 );
 
@@ -120,7 +120,7 @@ create table telefono(
 
 create table contacto(
 
-   cedula bigint,
+   cedula numeric(9),
    nombre varchar(40) not null,
    apellido varchar(40) not null,
    funcion varchar (20) not null,
@@ -135,11 +135,11 @@ create table contacto(
 
 create table producto(
 
-   codigo int,
+   codigo numeric(6),
    nombre varchar(40) not null,
    descripcion varchar(400) not null,
-   precio float not null,
-   ranking int,
+   precio numeric(20,2) not null,
+   ranking numeric(10),
    foto varchar(70) not null unique,
 
    /*constraints*/
@@ -149,11 +149,11 @@ create table producto(
 
 create table empleado(
 
-  cedula bigint,
+  cedula numeric(9),
   nombre varchar(40) not null,
   apellido varchar(40) not null,
   cargo varchar(20) not null,
-  fk_usuario int not null,
+  fk_usuario numeric(8) not null,
 
   /*constraints*/
   constraint pk_empleado primary key (cedula),
@@ -163,7 +163,7 @@ create table empleado(
 
 create table horario(
 
-   clave int,
+   clave numeric(5),
    tipo_turno varchar(100) not null,
    llega datetime not null,
    sale datetime not null,
@@ -176,9 +176,9 @@ create table horario(
 
 create table asistencia(
 
-   codigo int,
-   c_empleado bigint,
-   c_horario int,
+   codigo numeric(8),
+   c_empleado numeric(9),
+   c_horario numeric(5),
    fecha date not null,
    hora_llegada datetime not null,
    hora_salida datetime not null,
@@ -192,7 +192,7 @@ create table asistencia(
 
 create table vacacion(
 
-   codigo int,
+   codigo numeric(5),
    tipo varchar(50) not null unique,
    descripcion varchar(100) not null unique,
 
@@ -203,9 +203,9 @@ create table vacacion(
 
 create table empleado_vacacion(
 
-  codigo int,
-  c_empleado int,
-  c_vacacion int,
+  codigo numeric(8),
+  c_empleado numeric(9),
+  c_vacacion numeric(5),
   fecha_inicial datetime not null,
   fecha_final datetime not null,
 
@@ -218,9 +218,9 @@ create table empleado_vacacion(
 
 create table tienda(
 
-  codigo int,
+  codigo numeric(4),
   tipo varchar(50),
-  fk_lugar bigint not null,
+  fk_lugar numeric(10) not null,
 
   /*constraints*/
   constraint pk_tienda primary key (codigo),
@@ -230,10 +230,10 @@ create table tienda(
 
 create table review (
 
-  codigo int,
-  c_usuario int,
-  c_producto int,
-  valoracion int,
+  codigo numeric(10),
+  c_usuario numeric(8),
+  c_producto numeric(6),
+  valoracion numeric(10,1),
   descripcion varchar(400),
 
   /*constraints*/
@@ -245,11 +245,11 @@ create table review (
 
 create table inventario (
 
-  codigo int,
-  c_tienda int,
-  c_producto int,
+  codigo numeric(10),
+  c_tienda numeric(4),
+  c_producto numeric(6),
   zona varchar(10) not null,
-  cantidad int not null,
+  cantidad numeric(5) not null,
   tipo varchar(10) not null,
 
   /*constraints*/
@@ -262,7 +262,7 @@ create table inventario (
 
 create table estatus(
 
- codigo int,
+ codigo numeric(1),
  descripcion varchar(50) not null,
 
  /*constraints*/
@@ -273,12 +273,12 @@ create table estatus(
 
 create table pedido(
 
-  codigo int,
+  codigo numeric(10),
   tipo varchar(100) not null,
   presupuesto bigint not null,
-  fk_estatus int not null,
-  fk_usuario int,
-  fk_tienda int,
+  fk_estatus numeric(1) not null,
+  fk_usuario numeric(8),
+  fk_tienda numeric(4),
 
   /*constraints*/
   constraint pk_pedido primary key (codigo),
@@ -291,10 +291,10 @@ create table pedido(
 
 create table factura(
 
- codigo int,
- monto int not null,
+ codigo numeric(11),
+ monto numeric(20,2) not null,
  fecha datetime not null,
- fk_pedido int not null,
+ fk_pedido numeric(10) not null,
 
  /*constraints*/
  constraint pk_factura primary key (codigo),
@@ -304,9 +304,9 @@ create table factura(
 
 create table producto_factura (
 
-  codigo int,
-  c_producto int,
-  c_factura int,
+  codigo numeric(10),
+  c_producto numeric(6),
+  c_factura numeric(11),
 
 
   /*constraints*/
@@ -319,11 +319,11 @@ create table producto_factura (
 
 create table diario(
 
-  codigo int,
+  codigo numeric(5),
   descripcion varchar(70) not null,
   fecha_emision datetime not null,
   fecha_vencimiento datetime not null,
-  fk_empleado bigint not null,
+  fk_empleado numeric(9) not null,
 
 
   /*constraints*/
@@ -334,11 +334,11 @@ create table diario(
 
 create table descuento(
 
-  codigo int,
-  porcentaje int not null,
+  codigo numeric(6),
+  porcentaje numeric(3,2) not null,
   descripcion varchar(100) not null,
-  fk_pedido int,
-  fk_producto int,
+  fk_pedido numeric(10),
+  fk_producto numeric(6),
 
   /*constraints*/
   constraint pk_descuento primary key (codigo),
@@ -349,9 +349,9 @@ create table descuento(
 
 create table diario_descuento(
 
-   codigo int,
-   c_diario int,
-   c_descuento int,
+   codigo numeric(8),
+   c_diario numeric(5),
+   c_descuento numeric(6),
 
    /*constraints*/
    constraint pk_diario_descuento primary key (codigo,c_diario,c_descuento),
@@ -364,10 +364,10 @@ create table diario_descuento(
 
 create table medio_pago(
 
- codigo int,
+ codigo numeric(2),
  tipo varchar (10) not null,
- num_tarjeta bigint,
- num_cheque bigint,
+ num_tarjeta numeric(16),
+ num_cheque numeric(10),
 
  /*constraints*/
  constraint pk_medio_pago primary key (codigo)
@@ -376,9 +376,9 @@ create table medio_pago(
 
 create table pago_factura(
 
- codigo int,
- c_factura int,
- c_medio int,
+ codigo numeric(12),
+ c_factura numeric(11),
+ c_medio numeric(2),
 
  /*constraints*/
  constraint pk_pago_factura primary key (codigo,c_factura,c_medio),
