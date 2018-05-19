@@ -219,7 +219,7 @@ create table empleado_vacacion(
 create table tienda(
 
   codigo numeric(4),
-  nombre varchar(50),
+  tipo varchar(50),
   fk_lugar numeric(10) not null,
 
   /*constraints*/
