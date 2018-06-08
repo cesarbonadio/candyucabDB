@@ -67,6 +67,7 @@ create table juridico(
    fk_lugar int not null,
    fk_lugar_fiscal int not null,
    fk_tienda int,
+   num_carnet varchar(50),
 
    constraint pk_juridico primary key (rif)
 
@@ -83,6 +84,7 @@ create table naturale(
    apellido varchar(40) not null ,
    fk_lugar int not null,
    fk_tienda int,
+   num_carnet varchar(50),
 
    constraint pk_naturale primary key (cedula)
 
