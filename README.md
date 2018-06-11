@@ -1,3 +1,3 @@
-# Repositorio para los scripts de creación de la bases de datos y requerimientos
+### CandyUcab - Scripts de creación, inicialización y otros documentos
 
-## Candy Ucab
+
