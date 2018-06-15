@@ -1,4 +1,4 @@
-insert into Lugar (codigo, nombre, tipo) values
+﻿insert into Lugar (codigo, nombre, tipo) values
 (1601, 'Amazonas', 'Estado'),
 (1602, 'Anzoátegui', 'Estado'),
 (1603, 'Apure', 'Estado'),
@@ -1875,3 +1875,48 @@ insert into departamento (codigo,tipo,fk_tienda) values
 (198,'pedidos internos',40),
 (199,'ventas en linea',40),
 (200,'talento humano',40);
+
+insert into diario (codigo, descripcion, fecha_emision, fecha_vencimiento, fk_empleado) values
+(1, 'El año nuevo ha llegado, para celebrarlo no dejes de aprovechar nuestros decuentos en esta edición del Diario Dulce!', '2018-01-01 00:00:01', '2018-01-10 23:59:59', 26827608),
+(2, 'En esta edicion del Diario Dulce les presentamos los siguientes descuentos. No dejes de aprovecharlos y endulza tus dias', '2018-01-21 00:01:01', '2018-01-30 23:59:59', 8637184),
+(3, 'Se acerca San Valentin, aprovecha nuestros descuentos para darle un regalo a tu persona especial', '2018-02-10 00:00:01', '2018-02-14 23:59:59', 13303808),
+(4, 'En la edición del Diario Dulce de hoy les traemos los siguientes descuentos. Aprovecha y dale un regalo a un ser querido', '2018-02-15 00:00:01', '2018-02-24 23:59:59', 26827608),
+(5, 'La primavera esta a punto de llegar. Dale la bienvenida aprovechando los siguientes descuentos que les traemos', '2018-03-07 00:00:01', '2018-03-16 23:59:59', 26827608),
+(6, 'Pronto llegara la pascua, por eso aprovecha ahora los descuentos que les traemos hoy en esta edición del Diario Dulce', '2018-03-27 00:00:01', '2018-04-05 23:59:59', 13303808),
+(7, 'Volvemos con una nueva edición del Diario Dulce y los descuentos que te traemos no te los puedes perder. ¿Qué esperas? ¡Aprovechalos!', '2018-04-16 00:00:01', '2018-04-25 23:59:59', 14466994),
+(8, 'Nueva edición del Diario Dulce. ¿Sabes lo que significa eso no? ¡tiempo de comprar dulces al mejor precio posible!', '2018-05-06 00:00:01', '2018-05-15 23:59:59', 14466994),
+(9, '¿Te provocan unos dulces? ¿Y que si te digo que los puedes comprar a mejor precio? Pues la respuesta te la traemos en la edición de hoy del Diario Dulce', '2018-05-26 00:00:01', '2018-06-04 23:59:59', 14466994),
+(10, 'El verano ya llega y con él las vacaciones. ¿Y que mejor que acompañarlas con unos dulces? En la edición de hoy del Diario Dulce les traemos los siguientes descuentos', '2018-06-15 00:00:01', '2018-06-24 23:59:59', 10674241),
+(11, 'Dulces es sinonimo de felicidad, por eso aprovecha los descuentos que te traemos hoy y alegra tu vida', '2018-07-05 00:00:01', '2018-07-14 23:59:59', 8637184),
+(12, '¿Saben que me encanta? Los dulces, y ¿saben que mas? los precios economicos y sabemos que ustedes tambien. Por eso aprovecha los descuentos que les traemos en la edición de hoy del Diario Dulce', '2018-07-25 00:00:01', '2018-08-03 23:59:59', 8637184),
+(13, 'Como amamos los dulces, y seguro tu tambien. Haste un favor y aprovecha nuestros descuentos del dia de hoy. Endulza tu vida', '2018-08-14 00:00:01', '2018-08-23 23:59:59', 15429239),
+(14, 'Nuestro slogan es "un dulce mundo" y para que nos creas te traemos esta edición del Diario Dulce', '2018-09-03 00:00:01', '2018-09-12 23:59:59', 10674241),
+(15, 'Ya llega el otoño. Dale la mas dulce bienvenida aprovechando los descuentos de hoy', '2018-09-23 00:00:01', '2018-10-02 23:59:59', 26827608),
+(16, 'Se acerca la noche mas tenebrosa y dulce del año. Aprovecha los descuentos de hoy y ten un mes aterrador pero muy dulce', '2018-10-13 00:00:01', '2018-11-01 23:59:59', 10674241),
+(17, 'En Candy Ucab siempre buscamos que nuestros clientes sean felices por eso traemos la edición del Diario Dulce de hoy', '2018-11-02 00:00:01', '2018-11-11 23:59:59', 21688928),
+(18, 'Ya llega el invierno y ¿que mejor que estar en la cama bien arropado comiendo unos ricos dulces?, nosotros te lo respondemos, nada. Por eso aprovecha los descuentos que traemos hoy', '2018-11-22 00:00:01', '2018-12-01 23:59:59', 21688928),
+(19, 'Llegó la epoca mas feliz del año. Regala a tus seres queridos unos dulces aprovechando los descuentos que traemos este mes. Feliz Navidad y prospero año nuevo les desea Candy Ucab', '2018-12-12 00:00:01', '2018-12-31 23:59:59', 11190164);
+
+insert into descuento (codigo, porcentaje, descripcion, fk_producto) values
+(1, 15, 'Un dulce año nuevo', 7),
+(2, 10, 'Lo mejor para iniciar el año', 5),
+(3, 10, 'El mejor regalo para tu pareja', 4),
+(4, 20, 'Demuestrale que tan importante es para ti', 6),
+(5, 15, 'El mejor dulce, al mejor precio',1),
+(6, 10, 'El favorito de la casa',3),
+(7, 10, 'Date un susto',2),
+(8, 25, 'Preparate para Halloween',9),
+(9, 10, 'Lo mejor para navidad', 10),
+(10, 20, 'Para despedir el año', 8);
+
+insert into diario_descuento (c_diario, c_descuento) values
+(1,1),
+(1,2),
+(3,3),
+(3,4),
+(10,5),
+(10,6),
+(16,7),
+(16,8),
+(19,9),
+(19,10);
