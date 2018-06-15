@@ -375,8 +375,8 @@ create table punto_cliente (
 create table punto (
 
    codigo int not null auto_increment,
-   fecha_inicio date not null,
-   fecha_fin date not null,
+   fecha_inicio datetime not null,
+   fecha_fin datetime,
    valor int,
 
    constraint pk_punto primary key (codigo)

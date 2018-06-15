@@ -1,4 +1,4 @@
-﻿insert into Lugar (codigo, nombre, tipo) values
+insert into Lugar (codigo, nombre, tipo) values
 (1601, 'Amazonas', 'Estado'),
 (1602, 'Anzoátegui', 'Estado'),
 (1603, 'Apure', 'Estado'),
@@ -1673,6 +1673,72 @@ insert into empleado (cedula,nombre,apellido,cargo,salario) values
 (3007014,'Luisa','Sánchez','Jefe de pasillos',20732814);
 
 
+insert into punto(fecha_inicio,fecha_fin,valor) values
+
+   ('2017-02-18 07:30:10','2017-03-06 06:52:20',20),
+   ('2017-03-06 06:52:20','2017-04-12 23:42:12',25),
+   ('2017-04-12 23:42:12','2017-04-15 08:45:25',32),
+   ('2017-04-15 08:45:25','2017-05-20 21:45:47',59),
+   ('2017-05-20 21:45:47','2017-06-20 07:30:10',62),
+   ('2017-06-20 07:30:10','2017-06-23 09:58:58',65),
+   ('2017-06-23 09:58:58','2017-08-10 08:37:36',82),
+   ('2017-08-10 08:37:36','2018-02-18 13:15:15',85),
+   ('2018-02-18 13:15:15','2018-04-20 14:25:41',90);
+
+
+insert into punto(fecha_inicio,valor) values
+/*este punto no tiene fecha fin porque seria el actual
+  al momento de actualizar el valor del punto, esta pasa
+  a tener fecha fin y va a ser la misma que el inicio de la otra*/
+
+   ('2018-04-20 14:25:41',100);
+
+
+insert into rol (descripcion) values
+
+  ('todo'),
+  ('cajero'),
+  ('usuario comun'),
+  ('jefe de tienda'),
+  ('jefe de pasillos'),
+  ('gerente de promociones'),
+  ('jefe de despachos'),
+  ('administrador de tiendas'),
+  ('jefe recursos humanos');
+
+
+
+insert into privilegio (descripcion) values
+  /*cada privilegio corresponde a una de las 4 operaciones basicas
+  a cada entidad (no a todas, solo a las que requieren interacción
+  directa con el usuario), no se colocan entidades con registros que pretenden
+  ser fijos, como estatus o lugar  */
+
+  ('insertar usuario'),('eliminar usuario'),('ver usuario'),('actualizar usuario'),
+  ('insertar juricido'),('eliminar juridico'),('ver juridico'),('actualizar juridico'),
+  ('insertar naturale'),('eliminar naturale'),('ver naturale'),('actualizar naturale'),
+  ('insertar telefono'),('eliminar telefono'),('ver telefono'),('actualizar telefono'),
+  ('insertar contacto'),('eliminar contacto'),('ver contacto'),('actualizar contacto'),
+  ('insertar producto'),('eliminar producto'),('ver producto'),('actualizar producto'),
+  ('insertar empleado'),('eliminar empleado'),('ver empleado'),('actualizar empleado'),
+  ('insertar horario'),('eliminar horario'),('ver horario'),('actualizar horario'),
+  ('insertar asistencia'),('eliminar asistencia'),('ver asistencia'),('actualizar asistencia'),
+  ('insertar tienda'),('eliminar tienda'),('ver tienda'),('actualizar tienda'),
+  ('insertar review'),('eliminar review'),('ver review'),('actualizar review'),
+  ('insertar inventario'),('eliminar inventario'),('ver inventario'),('actualizar inventario'),
+  ('insertar pedido'),('eliminar pedido'),('ver pedido'),('actualizar pedido'),
+  ('insertar presupuesto'),('eliminar presupuesto'),('ver presupuesto'),('actualizar presupuesto'),
+  ('insertar producto_presupuesto'),('eliminar producto_presupuesto'),('ver producto_presupuesto'),('actualizar producto_presupuesto'),
+  ('insertar pago'),('eliminar pago'),('ver pago'),('actualizar pago'),
+  ('insertar medio_pago'),('eliminar medio_pago'),('ver medio_pago'),('actualizar medio_pago'),
+  ('insertar descuento'),('eliminar descuento'),('ver descuento'),('actualizar decuento'),
+  ('insertar diario'),('eliminar diario'),('ver diario'),('actualizar diario'),
+  ('insertar diario_descuento'),('eliminar diario_descuento '),('ver diario_descuento'),('actualizar diario_descuento'),
+  ('insertar punto_cliente'),('eliminar punto_cliente'),('ver punto_cliente'),('actualizar punto_cliente'),
+  ('insertar punto'),('eliminar punto'),('ver punto'),('actualizar punto');
+
+
+
 insert into departamento (codigo,tipo,fk_tienda) values
 
 (1,'despacho',1),
@@ -1876,26 +1942,27 @@ insert into departamento (codigo,tipo,fk_tienda) values
 (199,'ventas en linea',40),
 (200,'talento humano',40);
 
+
 insert into diario (codigo, descripcion, fecha_emision, fecha_vencimiento, fk_empleado) values
 (1, 'El año nuevo ha llegado, para celebrarlo no dejes de aprovechar nuestros decuentos en esta edición del Diario Dulce!', '2018-01-01 00:00:01', '2018-01-10 23:59:59', 26827608),
-(2, 'En esta edicion del Diario Dulce les presentamos los siguientes descuentos. No dejes de aprovecharlos y endulza tus dias', '2018-01-21 00:01:01', '2018-01-30 23:59:59', 8637184),
-(3, 'Se acerca San Valentin, aprovecha nuestros descuentos para darle un regalo a tu persona especial', '2018-02-10 00:00:01', '2018-02-14 23:59:59', 13303808),
+(2, 'En esta edicion del Diario Dulce les presentamos los siguientes descuentos. No dejes de aprovecharlos y endulza tus dias', '2018-01-21 00:01:01', '2018-01-30 23:59:59', 12005035),
+(3, 'Se acerca San Valentin, aprovecha nuestros descuentos para darle un regalo a tu persona especial', '2018-02-10 00:00:01', '2018-02-14 23:59:59', 19106062),
 (4, 'En la edición del Diario Dulce de hoy les traemos los siguientes descuentos. Aprovecha y dale un regalo a un ser querido', '2018-02-15 00:00:01', '2018-02-24 23:59:59', 26827608),
 (5, 'La primavera esta a punto de llegar. Dale la bienvenida aprovechando los siguientes descuentos que les traemos', '2018-03-07 00:00:01', '2018-03-16 23:59:59', 26827608),
-(6, 'Pronto llegara la pascua, por eso aprovecha ahora los descuentos que les traemos hoy en esta edición del Diario Dulce', '2018-03-27 00:00:01', '2018-04-05 23:59:59', 13303808),
-(7, 'Volvemos con una nueva edición del Diario Dulce y los descuentos que te traemos no te los puedes perder. ¿Qué esperas? ¡Aprovechalos!', '2018-04-16 00:00:01', '2018-04-25 23:59:59', 14466994),
-(8, 'Nueva edición del Diario Dulce. ¿Sabes lo que significa eso no? ¡tiempo de comprar dulces al mejor precio posible!', '2018-05-06 00:00:01', '2018-05-15 23:59:59', 14466994),
-(9, '¿Te provocan unos dulces? ¿Y que si te digo que los puedes comprar a mejor precio? Pues la respuesta te la traemos en la edición de hoy del Diario Dulce', '2018-05-26 00:00:01', '2018-06-04 23:59:59', 14466994),
-(10, 'El verano ya llega y con él las vacaciones. ¿Y que mejor que acompañarlas con unos dulces? En la edición de hoy del Diario Dulce les traemos los siguientes descuentos', '2018-06-15 00:00:01', '2018-06-24 23:59:59', 10674241),
-(11, 'Dulces es sinonimo de felicidad, por eso aprovecha los descuentos que te traemos hoy y alegra tu vida', '2018-07-05 00:00:01', '2018-07-14 23:59:59', 8637184),
-(12, '¿Saben que me encanta? Los dulces, y ¿saben que mas? los precios economicos y sabemos que ustedes tambien. Por eso aprovecha los descuentos que les traemos en la edición de hoy del Diario Dulce', '2018-07-25 00:00:01', '2018-08-03 23:59:59', 8637184),
-(13, 'Como amamos los dulces, y seguro tu tambien. Haste un favor y aprovecha nuestros descuentos del dia de hoy. Endulza tu vida', '2018-08-14 00:00:01', '2018-08-23 23:59:59', 15429239),
-(14, 'Nuestro slogan es "un dulce mundo" y para que nos creas te traemos esta edición del Diario Dulce', '2018-09-03 00:00:01', '2018-09-12 23:59:59', 10674241),
+(6, 'Pronto llegara la pascua, por eso aprovecha ahora los descuentos que les traemos hoy en esta edición del Diario Dulce', '2018-03-27 00:00:01', '2018-04-05 23:59:59', 19106062),
+(7, 'Volvemos con una nueva edición del Diario Dulce y los descuentos que te traemos no te los puedes perder. ¿Qué esperas? ¡Aprovechalos!', '2018-04-16 00:00:01', '2018-04-25 23:59:59', 17502698),
+(8, 'Nueva edición del Diario Dulce. ¿Sabes lo que significa eso no? ¡tiempo de comprar dulces al mejor precio posible!', '2018-05-06 00:00:01', '2018-05-15 23:59:59', 17502698),
+(9, '¿Te provocan unos dulces? ¿Y que si te digo que los puedes comprar a mejor precio? Pues la respuesta te la traemos en la edición de hoy del Diario Dulce', '2018-05-26 00:00:01', '2018-06-04 23:59:59', 17502698),
+(10, 'El verano ya llega y con él las vacaciones. ¿Y que mejor que acompañarlas con unos dulces? En la edición de hoy del Diario Dulce les traemos los siguientes descuentos', '2018-06-15 00:00:01', '2018-06-24 23:59:59', 5105012),
+(11, 'Dulces es sinonimo de felicidad, por eso aprovecha los descuentos que te traemos hoy y alegra tu vida', '2018-07-05 00:00:01', '2018-07-14 23:59:59', 12005035),
+(12, '¿Saben que me encanta? Los dulces, y ¿saben que mas? los precios economicos y sabemos que ustedes tambien. Por eso aprovecha los descuentos que les traemos en la edición de hoy del Diario Dulce', '2018-07-25 00:00:01', '2018-08-03 23:59:59', 12005035),
+(13, 'Como amamos los dulces, y seguro tu tambien. Haste un favor y aprovecha nuestros descuentos del dia de hoy. Endulza tu vida', '2018-08-14 00:00:01', '2018-08-23 23:59:59', 10915023),
+(14, 'Nuestro slogan es "un dulce mundo" y para que nos creas te traemos esta edición del Diario Dulce', '2018-09-03 00:00:01', '2018-09-12 23:59:59', 5105012),
 (15, 'Ya llega el otoño. Dale la mas dulce bienvenida aprovechando los descuentos de hoy', '2018-09-23 00:00:01', '2018-10-02 23:59:59', 26827608),
-(16, 'Se acerca la noche mas tenebrosa y dulce del año. Aprovecha los descuentos de hoy y ten un mes aterrador pero muy dulce', '2018-10-13 00:00:01', '2018-11-01 23:59:59', 10674241),
-(17, 'En Candy Ucab siempre buscamos que nuestros clientes sean felices por eso traemos la edición del Diario Dulce de hoy', '2018-11-02 00:00:01', '2018-11-11 23:59:59', 21688928),
-(18, 'Ya llega el invierno y ¿que mejor que estar en la cama bien arropado comiendo unos ricos dulces?, nosotros te lo respondemos, nada. Por eso aprovecha los descuentos que traemos hoy', '2018-11-22 00:00:01', '2018-12-01 23:59:59', 21688928),
-(19, 'Llegó la epoca mas feliz del año. Regala a tus seres queridos unos dulces aprovechando los descuentos que traemos este mes. Feliz Navidad y prospero año nuevo les desea Candy Ucab', '2018-12-12 00:00:01', '2018-12-31 23:59:59', 11190164);
+(16, 'Se acerca la noche mas tenebrosa y dulce del año. Aprovecha los descuentos de hoy y ten un mes aterrador pero muy dulce', '2018-10-13 00:00:01', '2018-11-01 23:59:59', 5105012),
+(17, 'En Candy Ucab siempre buscamos que nuestros clientes sean felices por eso traemos la edición del Diario Dulce de hoy', '2018-11-02 00:00:01', '2018-11-11 23:59:59', 18281535),
+(18, 'Ya llega el invierno y ¿que mejor que estar en la cama bien arropado comiendo unos ricos dulces?, nosotros te lo respondemos, nada. Por eso aprovecha los descuentos que traemos hoy', '2018-11-22 00:00:01', '2018-12-01 23:59:59', 18281535),
+(19, 'Llegó la epoca mas feliz del año. Regala a tus seres queridos unos dulces aprovechando los descuentos que traemos este mes. Feliz Navidad y prospero año nuevo les desea Candy Ucab', '2018-12-12 00:00:01', '2018-12-31 23:59:59', 10097363);
 
 insert into descuento (codigo, porcentaje, descripcion, fk_producto) values
 (1, 15, 'Un dulce año nuevo', 7),
