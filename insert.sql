@@ -1687,7 +1687,7 @@ insert into punto(fecha_inicio,fecha_fin,valor) values
 
 
 insert into punto(fecha_inicio,valor) values
-/*este punto no tiene fecha fin porque seria el actual
+/*este punto no tiene fecha fin porque seria el actual.
   al momento de actualizar el valor del punto, esta pasa
   a tener fecha fin y va a ser la misma que el inicio de la otra*/
 
