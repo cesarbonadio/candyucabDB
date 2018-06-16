@@ -169,7 +169,6 @@ create table asistencia(
    codigo int,
    c_empleado int,
    c_horario int,
-   fecha date not null,
    hora_entrada datetime not null,
    hora_salida datetime not null,
 
