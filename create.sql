@@ -93,7 +93,7 @@ create table naturale(
 
 create table telefono(
 
-   valor int,
+   valor varchar(15),
    tipo varchar(15),
    fk_juridico varchar(40),
    fk_naturale int,
