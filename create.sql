@@ -312,7 +312,7 @@ create table pago(
 
 create table medio_pago(
 
- codigo int,
+ codigo int auto_increment,
  tipo varchar (10) not null,
  num_tarjeta int,
  num_cheque int,
