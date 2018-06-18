@@ -180,7 +180,7 @@ create table vacacion(
 
    codigo int,
    fecha_inicial date not null,
-   fecha_final date not null,
+   fecha_final not null,
    descripcion varchar(50),
    fk_empleado int,
 
@@ -261,7 +261,7 @@ create table estatus(
 create table pedido(
 
   codigo int not null auto_increment,
-  fecha date not null,
+  fecha datetime not null,
   c_presupuesto int not null,
 
   constraint pk_pedido primary key (codigo)
@@ -273,7 +273,7 @@ create table presupuesto(
 
   codigo int not null auto_increment,
   total numeric (20,2) not null,
-  fecha date not null,
+  fecha datetime not null,
   fk_juridico varchar(40),
   fk_naturale int,
   fk_tienda int,
@@ -301,7 +301,7 @@ create table pago(
 
  codigo int not null auto_increment,
  monto numeric(20,2) not null,
- fecha date not null,
+ fecha datetime not null,
  fk_pedido int,
  fk_medio_pago int,
 
