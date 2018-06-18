@@ -180,7 +180,7 @@ create table vacacion(
 
    codigo int,
    fecha_inicial date not null,
-   fecha_final not null,
+   fecha_final date not null,
    descripcion varchar(50),
    fk_empleado int,
 
