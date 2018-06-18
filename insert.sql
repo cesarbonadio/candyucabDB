@@ -1522,18 +1522,18 @@ insert into tipo (codigo,descripcion) values
 (15,'pimienta');
 
 
-insert into producto (nombre,descripcion,precio,ranking) values
+insert into producto (nombre,descripcion,precio,ranking,fk_tipo) values
 
-('chupeta rimbombim','el famoso caramelo con palo ideado por Enric Bernat',250.23,1),
-('ricolin','caramelo de bolsillo mentolado',251,2),
-('firi firi','son pastillas que proporcionan frescura',632,3),
-('chupeta de corazon','chupeta con combinacion dulce y picante',142,4),
-('pirulito','caramelo alargado',523.2,5),
-('ricura','caramelo picante con centro de chicle',125.6,6),
-('original','caramelo balsamico de candy ucab',231.2,7),
-('dulcin','caramelos cuadrados de distintos colores',212,8),
-('choco candy','caramelos de chocolate y cafe',842,9),
-('blue','caramelo de cafe con centro de arequipe',126.5,10);
+('chupeta rimbombim','el famoso caramelo con palo ideado por Enric Bernat',250.23,1,11),
+('ricolin','caramelo de bolsillo mentolado',251,2,12),
+('firi firi','son pastillas que proporcionan frescura',632,3,14),
+('chupeta de corazon','chupeta con combinacion dulce y picante',142,4,1),
+('pirulito','caramelo alargado',523.2,5,8),
+('ricura','caramelo picante con centro de chicle',125.6,6,3),
+('original','caramelo balsamico de candy ucab',231.2,7,1),
+('dulcin','caramelos cuadrados de distintos colores',212,8,15),
+('choco candy','caramelos de chocolate y cafe',842,9,8),
+('blue','caramelo de cafe con centro de arequipe',126.5,10,8);
 
 
 insert into estatus (codigo,descripcion) values
@@ -1977,6 +1977,8 @@ insert into descuento (codigo, porcentaje, descripcion, fk_producto) values
 (10, 20, 'Para despedir el año', 8);
 
 insert into diario_descuento (c_diario, c_descuento) values
+/*n a n entre diario y descuento*/
+
 (1,1),
 (1,2),
 (3,3),
@@ -1987,3 +1989,104 @@ insert into diario_descuento (c_diario, c_descuento) values
 (16,8),
 (19,9),
 (19,10);
+
+
+insert into juridico (rif,correo,d_social,r_social,pagina_web,capital,fk_lugar,fk_lugar_fiscal,fk_tienda,num_carnet) values
+/*insertar unos cuantos clientes juridicos*/
+
+   ('J9RHFUE8','empresa1@gmail.com','empresa1','C.A','empresa1.com',125000,1,1,2,'2-J9RHFUE8'),
+   ('J9RHWUE9','empresa2@gmail.com','empresa2','S.A','empresa2.com',256320,2,1,2,'2-J9RHWUE9'),
+   ('J9AAF5E8','empresa3@gmail.com','empresa3','C.A','empresa3.com',155265,3,1,3,'3-J9AAF5E8'),
+   ('J9R785HH','empresa4@gmail.com','empresa4','S.A','empresa4.com',100000,4,1,3,'3-J9R785HH'),
+   ('J567YUTH','empresa5@gmail.com','empresa5','C.A','empresa5.com',1000000,5,1,4,'4-J567YUTH'),
+   ('JAA89GGG','empresa6@gmail.com','empresa6','S.A','empresa6.com',1000000,6,1,4,'4-JAA89GGG'),
+   ('J1045HFH','empresa7@gmail.com','empresa7','C.A','empresa7.com',1212112,7,1,1,'1-J1045HFH'),
+   ('J4656556','empresa8@gmail.com','empresa8','S.A','empresa8.com',5451512,8,1,1,'1-J4656556'),
+   ('J0551545','empresa9@gmail.com','empresa9','C.A','empresa9.com',465412124,9,1,5,'5-J0551545'),
+   ('J000HHFF','empresa10@gmail.com','empresa10','S.A','empresa10.com',54454545,10,1,5,'5-J000HHFF');
+
+
+insert into naturale (cedula,rif,correo,nombre,apellido,fk_lugar,fk_tienda,num_carnet)  values
+/*insertar solo 2 clientes naturales de prueba*/
+
+   (27187092,'V27187092','cesar@gmail.com','César','Bonadío',1596,2,'2-27187092'),
+   (26521245,'V26521245','maria@gmail.com','María','Martínez',1596,2,'2-26521245');
+
+
+
+insert into contacto (cedula,nombre,apellido,funcion,fk_juridico) values
+/*solo 5 contactos de clientes*/
+
+   (21452125,'Roberto','Muñoz','Gerente','J9RHFUE8'),
+   (15263254,'Carlos','Chacón','Empleado','J9RHWUE9'),
+   (2541245,'Pablo','Escobar','Jefe','J9AAF5E8'),
+   (5424345,'Carla','Sánchez','Gerente','J9R785HH'),
+   (4578451,'Maria','Martínez','Sub-gerente','J567YUTH');
+
+
+
+insert into inventario (c_tienda,c_producto,zona,cantidad) values
+/*solo 5 inventarios de tiendas*/
+
+  (1,2,'l',260),
+  (6,3,'n',1500),
+  (9,3,'n',520),
+  (10,4,'a',362),
+  (11,4,'a',2561);
+
+
+insert into telefono (valor,tipo,fk_juridico) values
+/*solo 5 telefonos de juridicos*/
+
+  ('04143985290','movil','J9RHFUE8'),
+  ('04143040117','movil','J567YUTH'),
+  ('02123423123','trabajo','J567YUTH'),
+  ('02126523214','casa','J000HHFF'),
+  ('02126584251','casa','JAA89GGG');
+
+
+insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
+/*voy a insertar 5 usuarios de empleados*/
+
+ ('AlexanderCol','1234567',100,3,26827608),
+ ('GuillermoSan','guillermo1234',260,3,18636636),
+ ('AnaVivas12','anavivas456',100,3,9572808),
+ ('SantosGuillermo','1234567',100,3,11452826),
+ ('MariaSalas','123456789',100,3,14333232);
+
+
+ insert into vacacion (codigo,fecha_inicial,fecha_final,descripcion,fk_empleado) values
+ /*insertar 5 vacaciones*/
+
+ (1,'2017-12-12','2018-01-07','navidad',26827608),
+ (2,'2016-12-12','2017-01-08','navidad',18636636),
+ (3,'2017-04-20','2017-05-10','semana santa',9572808),
+ (4,'2016-04-20','2016-05-10','semana santa',11452826),
+ (5,'2016-06-06','2016-07-10','porque quizo',14333232);
+
+
+ insert into review (c_usuario,c_producto,valoracion,descripcion) values
+ /*insertar reseñas de usuarios*/
+
+ (1,1,5,'Lo compraría de nuevo, excelente producto'),
+ (1,2,4,'Bueno producto'),
+ (2,4,5,'La chupeta de corazón es un excelente producto, sobre todo por su sabor picante'),
+ (2,6,3,'No me gustó mucho, tiene una combinación extraña de frescura y picante'),
+ (5,1,5,'Esta clásica chupeta no ha camiado es excelente');
+
+
+ insert into medio_pago (tipo,num_tarjeta,fk_juridico) values
+ /*insertar 5 medios de pago solo para juridicos distintos*/
+
+ ('tarjeta',12456,'J9RHFUE8'),
+ ('tarjeta',45123,'J567YUTH'),
+ ('tarjeta',42132,'J567YUTH'),
+ ('tarjeta',45712,'J567YUTH'),
+ ('tarjeta',87454,'J0551545');
+
+
+ insert into punto_cliente (adquirido,valor,fk_naturale,fk_punto) values
+ /*historial de transacciones (negativas o positivas de un solo cliente natural seleccionado)*/
+
+ (1,20,27187092,1),
+ (1,20,27187092,1);
