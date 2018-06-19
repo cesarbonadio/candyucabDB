@@ -155,9 +155,9 @@ create table empleado(
 create table horario(
 
    clave int,
-   dia varchar (15) not null,
-   hora_inicio datetime not null,
-   hora_fin datetime not null,
+   tipo varchar (15) not null,
+   hora_inicio time not null,
+   hora_fin time not null,
 
    constraint pk_horario primary key (clave)
 
@@ -240,8 +240,6 @@ create table pedido_estatus(
  codigo int not null auto_increment,
  c_pedido int,
  c_estatus int,
- cantidad int,
- precio numeric(20,2),
 
  constraint pk_pedido_estatus primary key (codigo)
 
