@@ -1522,18 +1522,20 @@ insert into tipo (codigo,descripcion) values
 (15,'pimienta');
 
 
-insert into producto (nombre,descripcion,precio,ranking) values
+insert into producto (nombre,descripcion,precio,ranking,fk_tipo, foto) values
 
-('chupeta rimbombim','el famoso caramelo con palo ideado por Enric Bernat',250.23,1),
-('ricolin','caramelo de bolsillo mentolado',251,2),
-('firi firi','son pastillas que proporcionan frescura',632,3),
-('chupeta de corazon','chupeta con combinacion dulce y picante',142,4),
-('pirulito','caramelo alargado',523.2,5),
-('ricura','caramelo picante con centro de chicle',125.6,6),
-('original','caramelo balsamico de candy ucab',231.2,7),
-('dulcin','caramelos cuadrados de distintos colores',212,8),
-('choco candy','caramelos de chocolate y cafe',842,9),
-('blue','caramelo de cafe con centro de arequipe',126.5,10);
+('chupeta rimbombim','el famoso caramelo con palo ideado por Enric Bernat',250,1,11,'rimbombin.png'),
+('ricolin','caramelo de bolsillo mentolado',100,2,12,'ricolin.jpg'),
+('firi firi','son pastillas que proporcionan frescura',632,3,14,'firifiri.jpg'),
+('chupeta de corazon','chupeta con combinacion dulce y picante',142,4,1,'corazon.jpg'),
+('pirulito','caramelo alargado',200,5,8,'pirulito.jpg'),
+('ricura','caramelo picante con centro de chicle',500,6,3,'ricura.jpg'),
+('original','caramelo balsamico de candy ucab',231.2,7,1,'original.jpg'),
+('dulcin','caramelos cuadrados de distintos colores',212,8,15,'dulcin.jpg'),
+('choco candy','caramelos de chocolate y cafe',842,9,8,'choco.jpg'),
+('blue','caramelo de cafe con centro de arequipe',126.5,10,8,'blue.jpg'),
+('chococo','chocolate con relleno de coco',135.4,11,8,'chococo.jpg'),
+('acidin','el caramelo mas acido del mercado',58.7,12,13,'acidin.jpg');
 
 
 insert into estatus (codigo,descripcion) values
@@ -1671,6 +1673,85 @@ insert into empleado (cedula,nombre,apellido,cargo,salario) values
 (6854744,'Leonardo','Paz','Jefe de pasillos',14031369),
 (17502698,'Andrés','Fernández','Jefe de tienda',14466994),
 (3007014,'Luisa','Sánchez','Jefe de pasillos',20732814);
+
+
+insert into punto(fecha_inicio,fecha_fin,valor) values
+
+   ('2017-02-18 07:30:10','2017-03-06 06:52:20',20),
+   ('2017-03-06 06:52:20','2017-04-12 23:42:12',25),
+   ('2017-04-12 23:42:12','2017-04-15 08:45:25',32),
+   ('2017-04-15 08:45:25','2017-05-20 21:45:47',59),
+   ('2017-05-20 21:45:47','2017-06-20 07:30:10',62),
+   ('2017-06-20 07:30:10','2017-06-23 09:58:58',65),
+   ('2017-06-23 09:58:58','2017-08-10 08:37:36',82),
+   ('2017-08-10 08:37:36','2018-02-18 13:15:15',85),
+   ('2018-02-18 13:15:15','2018-04-20 14:25:41',90);
+
+
+insert into punto(fecha_inicio,valor) values
+/*este punto no tiene fecha fin porque seria el actual.
+  al momento de actualizar el valor del punto, esta pasa
+  a tener fecha fin y va a ser la misma que el inicio de la otra*/
+
+   ('2018-04-20 14:25:41',100);
+
+
+insert into rol (descripcion) values
+
+  ('todo'),
+  ('cajero'),
+  ('usuario comun'),
+  ('jefe de tienda'),
+  ('jefe de pasillos'),
+  ('gerente de promociones'),
+  ('jefe de despachos'),
+  ('administrador de tiendas'),
+  ('jefe recursos humanos');
+
+
+
+insert into privilegio (descripcion) values
+  /*cada privilegio corresponde a una de las 4 operaciones basicas
+  a cada entidad (no a todas, solo a las que requieren interacción
+  directa con el usuario), no se colocan entidades con registros que pretenden
+  ser fijos, como estatus o lugar  */
+
+  ('insertar usuario'),('eliminar usuario'),('ver usuario'),('actualizar usuario'),
+  ('insertar juricido'),('eliminar juridico'),('ver juridico'),('actualizar juridico'),
+  ('insertar naturale'),('eliminar naturale'),('ver naturale'),('actualizar naturale'),
+  ('insertar telefono'),('eliminar telefono'),('ver telefono'),('actualizar telefono'),
+  ('insertar contacto'),('eliminar contacto'),('ver contacto'),('actualizar contacto'),
+  ('insertar producto'),('eliminar producto'),('ver producto'),('actualizar producto'),
+  ('insertar empleado'),('eliminar empleado'),('ver empleado'),('actualizar empleado'),
+  ('insertar horario'),('eliminar horario'),('ver horario'),('actualizar horario'),
+  ('insertar asistencia'),('eliminar asistencia'),('ver asistencia'),('actualizar asistencia'),
+  ('insertar tienda'),('eliminar tienda'),('ver tienda'),('actualizar tienda'),
+  ('insertar review'),('eliminar review'),('ver review'),('actualizar review'),
+  ('insertar inventario'),('eliminar inventario'),('ver inventario'),('actualizar inventario'),
+  ('insertar pedido'),('eliminar pedido'),('ver pedido'),('actualizar pedido'),
+  ('insertar presupuesto'),('eliminar presupuesto'),('ver presupuesto'),('actualizar presupuesto'),
+  ('insertar producto_presupuesto'),('eliminar producto_presupuesto'),('ver producto_presupuesto'),('actualizar producto_presupuesto'),
+  ('insertar pago'),('eliminar pago'),('ver pago'),('actualizar pago'),
+  ('insertar medio_pago'),('eliminar medio_pago'),('ver medio_pago'),('actualizar medio_pago'),
+  ('insertar descuento'),('eliminar descuento'),('ver descuento'),('actualizar decuento'),
+  ('insertar diario'),('eliminar diario'),('ver diario'),('actualizar diario'),
+  ('insertar diario_descuento'),('eliminar diario_descuento '),('ver diario_descuento'),('actualizar diario_descuento'),
+  ('insertar punto_cliente'),('eliminar punto_cliente'),('ver punto_cliente'),('actualizar punto_cliente'),
+  ('insertar punto'),('eliminar punto'),('ver punto'),('actualizar punto');
+
+
+insert into rol_privilegio (c_rol,c_priv) values
+
+  (1,1),
+  (1,2),
+  (1,3),
+  (1,4),
+  (1,5),
+  (1,6),
+  (1,7),
+  (1,8),
+  (1,9),
+  (1,10);
 
 
 insert into departamento (codigo,tipo,fk_tienda) values
@@ -1876,26 +1957,27 @@ insert into departamento (codigo,tipo,fk_tienda) values
 (199,'ventas en linea',40),
 (200,'talento humano',40);
 
+
 insert into diario (codigo, descripcion, fecha_emision, fecha_vencimiento, fk_empleado) values
 (1, 'El año nuevo ha llegado, para celebrarlo no dejes de aprovechar nuestros decuentos en esta edición del Diario Dulce!', '2018-01-01 00:00:01', '2018-01-10 23:59:59', 26827608),
-(2, 'En esta edicion del Diario Dulce les presentamos los siguientes descuentos. No dejes de aprovecharlos y endulza tus dias', '2018-01-21 00:01:01', '2018-01-30 23:59:59', 8637184),
-(3, 'Se acerca San Valentin, aprovecha nuestros descuentos para darle un regalo a tu persona especial', '2018-02-10 00:00:01', '2018-02-14 23:59:59', 13303808),
+(2, 'En esta edicion del Diario Dulce les presentamos los siguientes descuentos. No dejes de aprovecharlos y endulza tus dias', '2018-01-21 00:01:01', '2018-01-30 23:59:59', 12005035),
+(3, 'Se acerca San Valentin, aprovecha nuestros descuentos para darle un regalo a tu persona especial', '2018-02-10 00:00:01', '2018-02-14 23:59:59', 19106062),
 (4, 'En la edición del Diario Dulce de hoy les traemos los siguientes descuentos. Aprovecha y dale un regalo a un ser querido', '2018-02-15 00:00:01', '2018-02-24 23:59:59', 26827608),
 (5, 'La primavera esta a punto de llegar. Dale la bienvenida aprovechando los siguientes descuentos que les traemos', '2018-03-07 00:00:01', '2018-03-16 23:59:59', 26827608),
-(6, 'Pronto llegara la pascua, por eso aprovecha ahora los descuentos que les traemos hoy en esta edición del Diario Dulce', '2018-03-27 00:00:01', '2018-04-05 23:59:59', 13303808),
-(7, 'Volvemos con una nueva edición del Diario Dulce y los descuentos que te traemos no te los puedes perder. ¿Qué esperas? ¡Aprovechalos!', '2018-04-16 00:00:01', '2018-04-25 23:59:59', 14466994),
-(8, 'Nueva edición del Diario Dulce. ¿Sabes lo que significa eso no? ¡tiempo de comprar dulces al mejor precio posible!', '2018-05-06 00:00:01', '2018-05-15 23:59:59', 14466994),
-(9, '¿Te provocan unos dulces? ¿Y que si te digo que los puedes comprar a mejor precio? Pues la respuesta te la traemos en la edición de hoy del Diario Dulce', '2018-05-26 00:00:01', '2018-06-04 23:59:59', 14466994),
-(10, 'El verano ya llega y con él las vacaciones. ¿Y que mejor que acompañarlas con unos dulces? En la edición de hoy del Diario Dulce les traemos los siguientes descuentos', '2018-06-15 00:00:01', '2018-06-24 23:59:59', 10674241),
-(11, 'Dulces es sinonimo de felicidad, por eso aprovecha los descuentos que te traemos hoy y alegra tu vida', '2018-07-05 00:00:01', '2018-07-14 23:59:59', 8637184),
-(12, '¿Saben que me encanta? Los dulces, y ¿saben que mas? los precios economicos y sabemos que ustedes tambien. Por eso aprovecha los descuentos que les traemos en la edición de hoy del Diario Dulce', '2018-07-25 00:00:01', '2018-08-03 23:59:59', 8637184),
-(13, 'Como amamos los dulces, y seguro tu tambien. Haste un favor y aprovecha nuestros descuentos del dia de hoy. Endulza tu vida', '2018-08-14 00:00:01', '2018-08-23 23:59:59', 15429239),
-(14, 'Nuestro slogan es "un dulce mundo" y para que nos creas te traemos esta edición del Diario Dulce', '2018-09-03 00:00:01', '2018-09-12 23:59:59', 10674241),
+(6, 'Pronto llegara la pascua, por eso aprovecha ahora los descuentos que les traemos hoy en esta edición del Diario Dulce', '2018-03-27 00:00:01', '2018-04-05 23:59:59', 19106062),
+(7, 'Volvemos con una nueva edición del Diario Dulce y los descuentos que te traemos no te los puedes perder. ¿Qué esperas? ¡Aprovechalos!', '2018-04-16 00:00:01', '2018-04-25 23:59:59', 17502698),
+(8, 'Nueva edición del Diario Dulce. ¿Sabes lo que significa eso no? ¡tiempo de comprar dulces al mejor precio posible!', '2018-05-06 00:00:01', '2018-05-15 23:59:59', 17502698),
+(9, '¿Te provocan unos dulces? ¿Y que si te digo que los puedes comprar a mejor precio? Pues la respuesta te la traemos en la edición de hoy del Diario Dulce', '2018-05-26 00:00:01', '2018-06-04 23:59:59', 17502698),
+(10, 'El verano ya llega y con él las vacaciones. ¿Y que mejor que acompañarlas con unos dulces? En la edición de hoy del Diario Dulce les traemos los siguientes descuentos', '2018-06-15 00:00:01', '2018-06-24 23:59:59', 5105012),
+(11, 'Dulces es sinonimo de felicidad, por eso aprovecha los descuentos que te traemos hoy y alegra tu vida', '2018-07-05 00:00:01', '2018-07-14 23:59:59', 12005035),
+(12, '¿Saben que me encanta? Los dulces, y ¿saben que mas? los precios economicos y sabemos que ustedes tambien. Por eso aprovecha los descuentos que les traemos en la edición de hoy del Diario Dulce', '2018-07-25 00:00:01', '2018-08-03 23:59:59', 12005035),
+(13, 'Como amamos los dulces, y seguro tu tambien. Haste un favor y aprovecha nuestros descuentos del dia de hoy. Endulza tu vida', '2018-08-14 00:00:01', '2018-08-23 23:59:59', 10915023),
+(14, 'Nuestro slogan es "un dulce mundo" y para que nos creas te traemos esta edición del Diario Dulce', '2018-09-03 00:00:01', '2018-09-12 23:59:59', 5105012),
 (15, 'Ya llega el otoño. Dale la mas dulce bienvenida aprovechando los descuentos de hoy', '2018-09-23 00:00:01', '2018-10-02 23:59:59', 26827608),
-(16, 'Se acerca la noche mas tenebrosa y dulce del año. Aprovecha los descuentos de hoy y ten un mes aterrador pero muy dulce', '2018-10-13 00:00:01', '2018-11-01 23:59:59', 10674241),
-(17, 'En Candy Ucab siempre buscamos que nuestros clientes sean felices por eso traemos la edición del Diario Dulce de hoy', '2018-11-02 00:00:01', '2018-11-11 23:59:59', 21688928),
-(18, 'Ya llega el invierno y ¿que mejor que estar en la cama bien arropado comiendo unos ricos dulces?, nosotros te lo respondemos, nada. Por eso aprovecha los descuentos que traemos hoy', '2018-11-22 00:00:01', '2018-12-01 23:59:59', 21688928),
-(19, 'Llegó la epoca mas feliz del año. Regala a tus seres queridos unos dulces aprovechando los descuentos que traemos este mes. Feliz Navidad y prospero año nuevo les desea Candy Ucab', '2018-12-12 00:00:01', '2018-12-31 23:59:59', 11190164);
+(16, 'Se acerca la noche mas tenebrosa y dulce del año. Aprovecha los descuentos de hoy y ten un mes aterrador pero muy dulce', '2018-10-13 00:00:01', '2018-11-01 23:59:59', 5105012),
+(17, 'En Candy Ucab siempre buscamos que nuestros clientes sean felices por eso traemos la edición del Diario Dulce de hoy', '2018-11-02 00:00:01', '2018-11-11 23:59:59', 18281535),
+(18, 'Ya llega el invierno y ¿que mejor que estar en la cama bien arropado comiendo unos ricos dulces?, nosotros te lo respondemos, nada. Por eso aprovecha los descuentos que traemos hoy', '2018-11-22 00:00:01', '2018-12-01 23:59:59', 18281535),
+(19, 'Llegó la epoca mas feliz del año. Regala a tus seres queridos unos dulces aprovechando los descuentos que traemos este mes. Feliz Navidad y prospero año nuevo les desea Candy Ucab', '2018-12-12 00:00:01', '2018-12-31 23:59:59', 10097363);
 
 insert into descuento (codigo, porcentaje, descripcion, fk_producto) values
 (1, 15, 'Un dulce año nuevo', 7),
@@ -1910,6 +1992,8 @@ insert into descuento (codigo, porcentaje, descripcion, fk_producto) values
 (10, 20, 'Para despedir el año', 8);
 
 insert into diario_descuento (c_diario, c_descuento) values
+/*n a n entre diario y descuento*/
+
 (1,1),
 (1,2),
 (3,3),
@@ -1920,3 +2004,230 @@ insert into diario_descuento (c_diario, c_descuento) values
 (16,8),
 (19,9),
 (19,10);
+
+
+insert into juridico (rif,correo,d_social,r_social,pagina_web,capital,fk_lugar,fk_lugar_fiscal,fk_tienda,num_carnet) values
+/*insertar unos cuantos clientes juridicos*/
+
+   ('J9RHFUE8','empresa1@gmail.com','empresa1','C.A','empresa1.com',125000,1,1,2,'2-J9RHFUE8'),
+   ('J9RHWUE9','empresa2@gmail.com','empresa2','S.A','empresa2.com',256320,2,1,2,'2-J9RHWUE9'),
+   ('J9AAF5E8','empresa3@gmail.com','empresa3','C.A','empresa3.com',155265,3,1,3,'3-J9AAF5E8'),
+   ('J9R785HH','empresa4@gmail.com','empresa4','S.A','empresa4.com',100000,4,1,3,'3-J9R785HH'),
+   ('J567YUTH','empresa5@gmail.com','empresa5','C.A','empresa5.com',1000000,5,1,4,'4-J567YUTH'),
+   ('JAA89GGG','empresa6@gmail.com','empresa6','S.A','empresa6.com',1000000,6,1,4,'4-JAA89GGG'),
+   ('J1045HFH','empresa7@gmail.com','empresa7','C.A','empresa7.com',1212112,7,1,1,'1-J1045HFH'),
+   ('J4656556','empresa8@gmail.com','empresa8','S.A','empresa8.com',5451512,8,1,1,'1-J4656556'),
+   ('J0551545','empresa9@gmail.com','empresa9','C.A','empresa9.com',465412124,9,1,5,'5-J0551545'),
+   ('J000HHFF','empresa10@gmail.com','empresa10','S.A','empresa10.com',54454545,10,1,5,'5-J000HHFF');
+
+
+insert into naturale (cedula,rif,correo,nombre,apellido,fk_lugar,fk_tienda,num_carnet)  values
+/*insertar solo 2 clientes naturales de prueba*/
+
+   (27187092,'V27187092','cesar@gmail.com','César','Bonadío',1596,2,'2-27187092'),
+   (26521245,'V26521245','maria@gmail.com','María','Martínez',1596,2,'2-26521245');
+
+
+insert into naturale (cedula,rif,correo,nombre,apellido,fk_lugar) values
+
+  (3013800,'7793-J','Mónica2@gmail.com','Mónica','Gonzáles',53),
+  (3029804,'8287-J','Javier@gmail.com','Javier','Núñez',15),
+  (3024780,'7077-J','Luisa@gmail.com','Luisa','Fernández',45),
+  (3008955,'5892-J','Guillermo1@gmail.com','Guillermo','Ramírez',36),
+  (3030689,'5335-J','Mónica1@gmail.com','Mónica','Rodríguez',12),
+  (3003898,'7452-J','Andrea1@gmail.com','Andrea','Zambrano',26),
+  (3008544,'8787-J','Sofía2@gmail.com','Sofía','Colmenares',48),
+  (3001857,'5677-J','Leonardo23@gmail.com','Leonardo','López',5),
+  (3013130,'6296-J','Alejandra123@gmail.com','Alejandra','Mendoza',4),
+  (3005090,'7075-J','Alejandra1@gmail.com','Alejandra','Rodríguez',10),
+  (3026023,'8592-J','José56@gmail.com','José','Bastidas',37),
+  (3020851,'6425-J','Leonardo45@gmail.com','Leonardo','Paz',45),
+  (3018582,'8886-J','Daniela12@gmail.com','Daniela','Bastidas',8),
+  (3028927,'9461-J','Adriana89@gmail.com','Adriana','Bastidas',2),
+  (3004788,'8876-J','Marianna98@gmail.com','Marianna','Duarte',8),
+  (3001224,'5773-J','Jesús15@gmail.com','Jesús','Rivera',20),
+  (3017822,'6805-J','Antonella23@gmail.com','Antonella','Ramírez',15),
+  (3021316,'5272-J','Luis32@gmail.com','Luis','Rodríguez',38),
+  (3008598,'5400-J','Jorge700@gmail.com','Jorge','Torres',31),
+  (3028154,'7119-J','Andrea7000@gmail.com','Andrea','Rivera',4),
+  (3016027,'8169-J','Alicia3600@gmail.com','Alicia','Lovera',4),
+  (3017891,'7828-J','Jesús230@gmail.com','Jesús','Bastidas',6),
+  (3012396,'8914-J','Guillermo2310@gmail.com','Guillermo','Silva',22),
+  (3032072,'6382-J','Guillermo12630@gmail.com','Guillermo','Pérez',29),
+  (3011349,'9605-J','Alberto12540@gmail.com','Alberto','Zapata',4),
+  (3022316,'9487-J','Jorge1234@gmail.com','Jorge','Hernández',44),
+  (3002742,'9255-J','César1342@gmail.com','César','Fernández',28),
+  (3028349,'8850-J','Sofía2354@gmail.com','Sofía','Mora',8),
+  (3000923,'7854-J','Andrea1242@gmail.com','Andrea','García',34),
+  (3025970,'9615-J','Andrea5485@gmail.com','Andrea','Mendoza',48),
+  (3031979,'6673-J','Luis3245@gmail.com','Luis','Fernández',8),
+  (3001201,'7022-J','Andrés5641@gmail.com','Andrés','Zambrano',19),
+  (3031219,'8186-J','Laura21@gmail.com','Laura','Gonzáles',56),
+  (3030772,'6487-J','Ana154@gmail.com','Ana','Vivas',19),
+  (3001873,'8851-J','Alejandra124@gmail.com','Alejandra','Duarte',11),
+  (3022670,'6763-J','Andrés10@gmail.com','Andrés','Salas',5),
+  (3011156,'6066-J','César541@gmail.com','César','Mora',14),
+  (3018809,'9861-J','Luis651@gmail.com','Luis','Moreno',20),
+  (3017418,'5946-J','Mónica215@gmail.com','Mónica','Aponte',34),
+  (3001493,'6622-J','Jorge215@gmail.com','Jorge','Gutierrez',48),
+  (3005778,'5247-J','Carlos15@gmail.com','Carlos','Aponte',7),
+  (3025469,'9499-J','Carlos54@gmail.com','Carlos','Colmenares',26),
+  (3005228,'8471-J','Jorge65@gmail.com','Jorge','Jiménez',50),
+  (3013153,'6635-J','Javier65@gmail.com','Javier','Morales',44),
+  (3008025,'5204-J','Andrea6555@gmail.com','Andrea','Gutierrez',19),
+  (3030347,'7284-J','Adriana1201@gmail.com','Adriana','Moreno',31),
+  (3027027,'8001-J','Jesús121@gmail.com','Jesús','Goncalves',9),
+  (3016108,'7899-J','Javier545@gmail.com','Javier','García',18),
+  (3004701,'6823-J','Blanca788@gmail.com','Blanca','Gonzáles',4),
+  (3019242,'6689-J','Danielaa@gmail.com','Daniela','López',6),
+  (3015418,'5551-J','Alicia122@gmail.com','Alicia','Martínez',49),
+  (3003792,'7268-J','Adriana3245@gmail.com','Adriana','Lovera',19),
+  (3022289,'5878-J','Antonella21572@gmail.com','Antonella','Morales',43),
+  (3029821,'6613-J','Ana12012@gmail.com','Ana','Gonzáles',4),
+  (3001991,'5974-J','Andrés65471@gmail.com','Andrés','Gómez',2),
+  (3019984,'5520-J','Antonella5484@gmail.com','Antonella','Gonzáles',24),
+  (3018454,'7638-J','Jorge45@gmail.com','Jorge','Ortega',8),
+  (3009958,'8965-J','Eduardo54@gmail.com','Eduardo','Gómez',36),
+  (3023718,'7527-J','Carlos12@gmail.com','Carlos','Colmenares',26),
+  (3005784,'5041-J','Andrea1055@gmail.com','Andrea','Rodríguez',29),
+  (3025782,'6015-J','Guillermo65@gmail.com','Guillermo','Rodríguez',33),
+  (3022250,'5242-J','Gloria451@gmail.com','Gloria','García',31),
+  (3024025,'7373-J','Carmen124@gmail.com','Carmen','Rodríguez',58),
+  (3019905,'9291-J','Alberto1248@gmail.com','Alberto','Paz',38),
+  (3020369,'8959-J','Gloria545@gmail.com','Gloria','Morales',2),
+  (3001114,'7715-J','Ana898@gmail.com','Ana','Gómez',37),
+  (3015821,'6517-J','César562@gmail.com','César','Gonzáles',8),
+  (3014106,'8953-J','Antonella2632@gmail.com','Antonella','Torres',42),
+  (3020119,'6827-J','Antonella232@gmail.com','Antonella','Torres',51),
+  (3021936,'9839-J','Sara548@gmail.com','Sara','Mendoza',19),
+  (3003696,'5502-J','Ana4578@gmail.com','Ana','Duarte',45),
+  (3000355,'6579-J','Leonardo457@gmail.com','Leonardo','Torres',38),
+  (3016438,'7140-J','Guillermo548@gmail.com','Guillermo','Ortega',43),
+  (3026551,'8664-J','Alfredo111@gmail.com','Alfredo','Ramírez',51),
+  (3030850,'5426-J','Carlos3333@gmail.com','Carlos','Moreno',5),
+  (3020954,'9448-J','Alicia9999@gmail.com','Alicia','Morales',30),
+  (3014806,'7337-J','Alberto1111@gmail.com','Alberto','Sánchez',17),
+  (3030064,'9038-J','Eduardo2222@gmail.com','Eduardo','Bastidas',37),
+  (3011817,'7925-J','Javier333@gmail.com','Javier','Moreno',51),
+  (3004539,'9240-J','Mario22222@gmail.com','Mario','Zapata',41);
+
+
+
+insert into contacto (cedula,nombre,apellido,funcion,fk_juridico) values
+/*solo 5 contactos de clientes*/
+   (21452125,'Roberto','Muñoz','Gerente','J9RHFUE8'),
+   (15263254,'Carlos','Chacón','Empleado','J9RHWUE9'),
+   (2541245,'Pablo','Escobar','Jefe','J9AAF5E8'),
+   (5424345,'Carla','Sánchez','Gerente','J9R785HH'),
+   (4578451,'Maria','Martínez','Sub-gerente','J567YUTH');
+
+
+
+insert into inventario (c_tienda,c_producto,zona,cantidad) values
+/*solo 5 inventarios de tiendas*/
+  (1,2,'l',260),
+  (6,3,'n',1500),
+  (9,3,'n',520),
+  (10,4,'a',362),
+  (11,4,'a',2561);
+
+
+insert into telefono (valor,tipo,fk_juridico) values
+/*solo 5 telefonos de juridicos*/
+  ('04143985290','movil','J9RHFUE8'),
+  ('04143040117','movil','J567YUTH'),
+  ('02123423123','trabajo','J567YUTH'),
+  ('02126523214','casa','J000HHFF'),
+  ('02126584251','casa','JAA89GGG');
+
+
+insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
+/*voy a insertar 5 usuarios de empleados*/
+ ('AlexanderCol','1234567',100,3,26827608),
+ ('GuillermoSan','guillermo1234',260,3,18636636),
+ ('AnaVivas12','anavivas456',100,3,9572808),
+ ('SantosGuillermo','1234567',100,3,11452826),
+ ('MariaSalas','123456789',100,3,14333232);
+
+
+ insert into vacacion (codigo,fecha_inicial,fecha_final,descripcion,fk_empleado) values
+ /*insertar 5 vacaciones*/
+ (1,'2017-12-12','2018-01-07','navidad',26827608),
+ (2,'2016-12-12','2017-01-08','navidad',18636636),
+ (3,'2017-04-20','2017-05-10','semana santa',9572808),
+ (4,'2016-04-20','2016-05-10','semana santa',11452826),
+ (5,'2016-06-06','2016-07-10','porque quizo',14333232);
+
+
+ insert into review (c_usuario,c_producto,valoracion,descripcion) values
+ /*insertar reseñas de usuarios*/
+ (1,1,5,'Lo compraría de nuevo, excelente producto'),
+ (1,2,4,'Bueno producto'),
+ (2,4,5,'La chupeta de corazón es un excelente producto, sobre todo por su sabor picante'),
+ (2,6,3,'No me gustó mucho, tiene una combinación extraña de frescura y picante'),
+ (5,1,5,'Esta clásica chupeta no ha camiado es excelente');
+
+
+ insert into medio_pago (tipo,num_tarjeta,fk_juridico) values
+ /*insertar 5 medios de pago solo para juridicos distintos*/
+ ('tarjeta',12456,'J9RHFUE8'),
+ ('tarjeta',45123,'J567YUTH'),
+ ('tarjeta',42132,'J567YUTH'),
+ ('tarjeta',45712,'J567YUTH'),
+ ('tarjeta',87454,'J0551545');
+
+
+ insert into punto_cliente (adquirido,valor,fk_naturale,fk_punto) values
+ /*historial de transacciones (negativas o positivas de un solo cliente natural seleccionado)*/
+ (1,20,27187092,1),
+ (1,20,27187092,1);
+
+
+ insert into horario (clave,hora_inicio,hora_fin,tipo) values
+ /*Dos horarios en cada tienda, diurno y nocturno*/
+ (1 ,'07:00:00', '04:00:00', 'diurno'),
+ (2 ,'04:00:00', '09:00:00', 'nocturno');
+
+
+
+  insert into presupuesto (codigo, total, fecha,fk_naturale) values
+  /*insertar solo 5 presupuestos*/
+  (1,1500.00,'2018-04-01 07:04:43',27187092),
+  (2,1300.00,'2018-04-02 08:30:32',27187092),
+  (3,1400.00,'2018-04-03 09:32:21',27187092),
+  (4,1200.00,'2018-04-04 04:32:12',27187092),
+  (5,1600.00,'2018-04-05 12:12:12',27187092);
+
+
+
+  insert into pedido (codigo, fecha,c_presupuesto) values
+  (1,'2018-05-03 07:12:12',1),
+  (2,'2018-05-06 06:12:15',2),
+  (3,'2018-05-08 05:10:16',3),
+  (4,'2018-05-04 04:10:12',1),
+  (5,'2018-05-01 12:10:10',2);
+
+
+  insert into pago (codigo, monto, fecha,fk_pedido ,fk_medio_pago) values
+  (1,3000.00,'2018-12-11 07:32:12',2,1),
+  (2,4000.00,'2018-12-14 06:31:10',4,2),
+  (3,1000.00,'2018-12-24 05:23:31',1,1),
+  (4,5500.00,'2018-12-06 12:15:16',2,2),
+  (5,6000.00,'2018-12-03 10:45:12',3,1);
+
+
+
+  insert into pedido_estatus (codigo, c_pedido, c_estatus) values
+  (1,1,100),
+  (2,2,200),
+  (3,3,300),
+  (4,4,400),
+  (5,5,100);
+
+
+  insert into producto_presupuesto (codigo, cantidad, precio,c_presupuesto,c_producto) values
+  (1,100,25000,1,1),
+  (2,50,5000,2,2),
+  (3,100,25000,3,1),
+  (4,100,20000,1,5),
+  (5,50,25000,4,6);
