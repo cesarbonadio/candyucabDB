@@ -1,4 +1,4 @@
-﻿insert into Lugar (codigo, nombre, tipo) values
+insert into Lugar (codigo, nombre, tipo) values
 (1601, 'Amazonas', 'Estado'),
 (1602, 'Anzoátegui', 'Estado'),
 (1603, 'Apure', 'Estado'),
@@ -1536,6 +1536,7 @@ insert into producto (nombre,descripcion,precio,ranking,fk_tipo, foto) values
 ('blue','caramelo de cafe con centro de arequipe',126.5,10,8,'blue.jpg'),
 ('chococo','chocolate con relleno de coco',135.4,11,8,'chococo.jpg'),
 ('acidin','el caramelo mas acido del mercado',58.7,12,13,'acidin.jpg');
+
 
 
 insert into estatus (codigo,descripcion) values

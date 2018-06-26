@@ -93,7 +93,7 @@ create table naturale(
 
 create table telefono(
 
-   valor int,
+   valor varchar(15),
    tipo varchar(15),
    fk_juridico varchar(40),
    fk_naturale int,
@@ -155,9 +155,9 @@ create table empleado(
 create table horario(
 
    clave int,
-   dia varchar (15) not null,
-   hora_inicio datetime not null,
-   hora_fin datetime not null,
+   tipo varchar (15) not null,
+   hora_inicio time not null,
+   hora_fin time not null,
 
    constraint pk_horario primary key (clave)
 
@@ -169,7 +169,6 @@ create table asistencia(
    codigo int,
    c_empleado int,
    c_horario int,
-   fecha date not null,
    hora_entrada datetime not null,
    hora_salida datetime not null,
 
@@ -241,8 +240,6 @@ create table pedido_estatus(
  codigo int not null auto_increment,
  c_pedido int,
  c_estatus int,
- cantidad int,
- precio numeric(20,2),
 
  constraint pk_pedido_estatus primary key (codigo)
 
@@ -262,7 +259,7 @@ create table estatus(
 create table pedido(
 
   codigo int not null auto_increment,
-  fecha date not null,
+  fecha datetime not null,
   c_presupuesto int not null,
 
   constraint pk_pedido primary key (codigo)
@@ -274,7 +271,7 @@ create table presupuesto(
 
   codigo int not null auto_increment,
   total numeric (20,2) not null,
-  fecha date not null,
+  fecha datetime not null,
   fk_juridico varchar(40),
   fk_naturale int,
   fk_tienda int,
@@ -302,7 +299,7 @@ create table pago(
 
  codigo int not null auto_increment,
  monto numeric(20,2) not null,
- fecha date not null,
+ fecha datetime not null,
  fk_pedido int,
  fk_medio_pago int,
 
@@ -313,7 +310,7 @@ create table pago(
 
 create table medio_pago(
 
- codigo int,
+ codigo int auto_increment,
  tipo varchar (10) not null,
  num_tarjeta int,
  num_cheque int,
@@ -375,8 +372,8 @@ create table punto_cliente (
 create table punto (
 
    codigo int not null auto_increment,
-   fecha_inicio date not null,
-   fecha_fin date not null,
+   fecha_inicio datetime not null,
+   fecha_fin datetime,
    valor int,
 
    constraint pk_punto primary key (codigo)
