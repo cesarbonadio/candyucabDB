@@ -1522,18 +1522,21 @@ insert into tipo (codigo,descripcion) values
 (15,'pimienta');
 
 
-insert into producto (nombre,descripcion,precio,ranking,fk_tipo) values
+insert into producto (nombre,descripcion,precio,ranking,fk_tipo, foto) values
 
-('chupeta rimbombim','el famoso caramelo con palo ideado por Enric Bernat',250,1,11),
-('ricolin','caramelo de bolsillo mentolado',100,2,12),
-('firi firi','son pastillas que proporcionan frescura',632,3,14),
-('chupeta de corazon','chupeta con combinacion dulce y picante',142,4,1),
-('pirulito','caramelo alargado',200,5,8),
-('ricura','caramelo picante con centro de chicle',500,6,3),
-('original','caramelo balsamico de candy ucab',231.2,7,1),
-('dulcin','caramelos cuadrados de distintos colores',212,8,15),
-('choco candy','caramelos de chocolate y cafe',842,9,8),
-('blue','caramelo de cafe con centro de arequipe',126.5,10,8);
+('chupeta rimbombim','el famoso caramelo con palo ideado por Enric Bernat',250,1,11,'rimbombin.png'),
+('ricolin','caramelo de bolsillo mentolado',100,2,12,'ricolin.jpg'),
+('firi firi','son pastillas que proporcionan frescura',632,3,14,'firifiri.jpg'),
+('chupeta de corazon','chupeta con combinacion dulce y picante',142,4,1,'corazon.jpg'),
+('pirulito','caramelo alargado',200,5,8,'pirulito.jpg'),
+('ricura','caramelo picante con centro de chicle',500,6,3,'ricura.jpg'),
+('original','caramelo balsamico de candy ucab',231.2,7,1,'original.jpg'),
+('dulcin','caramelos cuadrados de distintos colores',212,8,15,'dulcin.jpg'),
+('choco candy','caramelos de chocolate y cafe',842,9,8,'choco.jpg'),
+('blue','caramelo de cafe con centro de arequipe',126.5,10,8,'blue.jpg'),
+('chococo','chocolate con relleno de coco',135.4,11,8,'chococo.jpg'),
+('acidin','el caramelo mas acido del mercado',58.7,12,13,'acidin.jpg');
+
 
 
 insert into estatus (codigo,descripcion) values
