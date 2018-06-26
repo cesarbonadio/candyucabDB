@@ -2169,13 +2169,13 @@ insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
  (5,1,5,'Esta clásica chupeta no ha camiado es excelente');
 
 
- insert into medio_pago (tipo,num_tarjeta,fk_juridico) values
+ insert into medio_pago (tipo,num_tarjeta,fk_juridico,marca_tarjeta) values
  /*insertar 5 medios de pago solo para juridicos distintos*/
- ('tarjeta',12456,'J9RHFUE8'),
- ('tarjeta',45123,'J567YUTH'),
- ('tarjeta',42132,'J567YUTH'),
- ('tarjeta',45712,'J567YUTH'),
- ('tarjeta',87454,'J0551545');
+ ('tarjeta',12456,'J9RHFUE8','visa'),
+ ('tarjeta',45123,'J567YUTH','master card'),
+ ('tarjeta',42132,'J567YUTH','american express'),
+ ('tarjeta',45712,'J567YUTH','visa'),
+ ('tarjeta',87454,'J0551545','visa');
 
 
  insert into punto_cliente (adquirido,valor,fk_naturale,fk_punto) values
