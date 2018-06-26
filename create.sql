@@ -313,6 +313,7 @@ create table medio_pago(
  codigo int auto_increment,
  tipo varchar (10) not null,
  num_tarjeta int,
+ marca_tarjeta varchar(20),
  num_cheque int,
  fk_juridico varchar(40),
  fk_naturale int,
