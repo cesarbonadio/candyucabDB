@@ -64,6 +64,7 @@ alter table vacacion add constraint fk_vacacion_empleado foreign key (fk_emplead
  alter table presupuesto add constraint fk_presupuesto_juridico foreign key (fk_juridico) references juridico(rif);
  alter table presupuesto add constraint fk_presupuesto_naturale foreign key (fk_naturale) references naturale(cedula);
  alter table presupuesto add constraint fk_presupuesto_tienda foreign key (fk_tienda) references tienda(codigo);
+ alter table presupuesto add constraint fk_presupuesto_tienda_compra foreign key (fk_tienda_compra) references tienda(codigo);
  alter table presupuesto add constraint fk_presupuesto_usuario foreign key (fk_usuario) references usuario(id);
 
 /*producto_presupuesto*/

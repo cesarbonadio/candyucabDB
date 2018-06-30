@@ -238,6 +238,7 @@ create table inventario (
 create table pedido_estatus(
 
  codigo int not null auto_increment,
+ cambio datetime not null,
  c_pedido int,
  c_estatus int,
 
@@ -275,6 +276,7 @@ create table presupuesto(
   fk_juridico varchar(40),
   fk_naturale int,
   fk_tienda int,
+  fk_tienda_compra int,
   fk_usuario int,
 
   constraint pk_presupuesto primary key (codigo)

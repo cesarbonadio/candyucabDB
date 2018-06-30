@@ -1,3 +1,4 @@
+﻿
 insert into Lugar (codigo, nombre, tipo) values
 (1601, 'Amazonas', 'Estado'),
 (1602, 'Anzoátegui', 'Estado'),
@@ -2178,6 +2179,10 @@ insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
  ('tarjeta',87454,'J0551545','visa');
 
 
+ insert into medio_pago (tipo,num_tarjeta,fk_naturale,marca_tarjeta) values
+ ('tarjeta',12444,27187092,'visa');
+
+
  insert into punto_cliente (adquirido,valor,fk_naturale,fk_punto) values
  /*historial de transacciones (negativas o positivas de un solo cliente natural seleccionado)*/
  (1,20,27187092,1),
@@ -2191,22 +2196,38 @@ insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
 
 
 
-  insert into presupuesto (codigo, total, fecha,fk_naturale) values
+  insert into presupuesto (codigo, total, fecha, fk_naturale, fk_tienda_compra) values
   /*insertar solo 5 presupuestos*/
-  (1,1500.00,'2018-04-01 07:04:43',27187092),
-  (2,1300.00,'2018-04-02 08:30:32',27187092),
-  (3,1400.00,'2018-04-03 09:32:21',27187092),
-  (4,1200.00,'2018-04-04 04:32:12',27187092),
-  (5,1600.00,'2018-04-05 12:12:12',27187092);
+  (1,1500.00,'2018-04-01 07:04:43',27187092,1),
+  (2,1300.00,'2018-04-02 08:30:32',27187092,2),
+  (3,1400.00,'2018-04-03 09:32:21',27187092,3),
+  (4,1200.00,'2018-04-04 04:32:12',27187092,1),
+  (5,1600.00,'2018-04-05 12:12:12',27187092,1);
+
+
+  insert into presupuesto (codigo, total, fecha, fk_tienda) values
+  /*insertar pedidos a la fabrica para poder hacer la comparacion que quiero*/
+  (6,2000.00,'2018-04-06 12:12:12',1),
+  (7,20500.00,'2018-04-06 12:12:12',2),
+  (8,13256.00,'2018-04-06 12:12:12',3),
+  (9,2562.00,'2018-04-06 12:12:12',2),
+  (10,200.00,'2018-04-06 12:12:12',2);
 
 
 
   insert into pedido (codigo, fecha,c_presupuesto) values
+  /*los pedidos*/
   (1,'2018-05-03 07:12:12',1),
   (2,'2018-05-06 06:12:15',2),
   (3,'2018-05-08 05:10:16',3),
-  (4,'2018-05-04 04:10:12',1),
-  (5,'2018-05-01 12:10:10',2);
+  (4,'2018-05-04 04:10:12',4),
+  (5,'2018-05-01 12:10:10',5),
+  (6,'2018-05-02 12:10:10',6),
+  (7,'2018-05-03 12:10:10',7),
+  (8,'2018-05-04 12:10:10',8),
+  (9,'2018-05-05 12:10:10',9),
+  (10,'2018-05-06 12:10:10',10);
+
 
 
   insert into pago (codigo, monto, fecha,fk_pedido ,fk_medio_pago) values
@@ -2218,12 +2239,13 @@ insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
 
 
 
-  insert into pedido_estatus (codigo, c_pedido, c_estatus) values
-  (1,1,100),
-  (2,2,200),
-  (3,3,300),
-  (4,4,400),
-  (5,5,100);
+  insert into pedido_estatus (codigo, cambio, c_pedido, c_estatus) values
+  /*ahorA VIENEN LAS REPOSICIONES A LA TIENDA, por poner un ejemplo*/
+  (1,'2018-05-02 12:10:10',6,100),
+  (2,'2018-04-06 12:12:12',7,100),
+  (3,'2018-05-04 12:10:10',8,100),
+  (4,'2018-05-05 12:10:10',9,100),
+  (5,'2018-05-06 12:10:10',10,100);
 
 
   insert into producto_presupuesto (codigo, cantidad, precio,c_presupuesto,c_producto) values
