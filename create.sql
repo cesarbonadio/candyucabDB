@@ -361,7 +361,7 @@ create table diario_descuento(
 create table punto_cliente (
 
    codigo int not null auto_increment,
-   adquirido int,
+   adquirido decimal(20,2),
    valor int,
    fk_juridico varchar(40),
    fk_naturale int,
