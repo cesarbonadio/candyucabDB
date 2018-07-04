@@ -2253,4 +2253,5 @@ insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
   (2,50,5000,2,2),
   (3,100,25000,3,1),
   (4,100,20000,1,5),
-  (5,50,25000,4,6);
+  (5,50,25000,4,6),
+  (6,20,32333,5,5);

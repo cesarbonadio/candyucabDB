@@ -95,3 +95,4 @@ alter table diario_descuento add constraint fk_diario_descuento_descuento foreig
 alter table punto_cliente add constraint fk_punto_cliente_juridico foreign key (fk_juridico) references juridico(rif);
 alter table punto_cliente add constraint fk_punto_cliente_naturale foreign key (fk_naturale) references naturale(cedula);
 alter table punto_cliente add constraint fk_punto_cliente_punto foreign key (fk_punto) references punto(codigo);
+alter table punto_cliente add constraint fk_punto_cliente_pedido foreign key (fk_pedido) references pedido(codigo);

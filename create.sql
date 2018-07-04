@@ -365,6 +365,7 @@ create table punto_cliente (
    valor int,
    fk_juridico varchar(40),
    fk_naturale int,
+   fk_pedido int,
    fk_punto int,
 
    constraint pk_punto_cliente primary key (codigo)
