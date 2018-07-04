@@ -2126,7 +2126,7 @@ insert into contacto (cedula,nombre,apellido,funcion,fk_juridico) values
 
 
 insert into inventario (c_tienda,c_producto,zona,cantidad) values
-/*solo 5 inventarios de tiendas*/|
+/*solo 5 inventarios de tiendas*/
   (1,1,'a',1000),
   (1,2,'a',1000),
   (1,3,'l',1000),
