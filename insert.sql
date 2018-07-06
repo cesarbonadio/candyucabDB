@@ -2627,7 +2627,8 @@ insert into usuario (username,password,puntos,fk_rol,fk_empleado) values
  ('GuillermoSan','guillermo1234',260,3,18636636),
  ('AnaVivas12','anavivas456',100,3,9572808),
  ('SantosGuillermo','1234567',100,3,11452826),
- ('MariaSalas','123456789',100,3,14333232);
+ ('MariaSalas','123456789',100,3,14333232),
+ ('admin','admin',500,1,10190727);
 
 
  insert into vacacion (codigo,fecha_inicial,fecha_final,descripcion,fk_empleado) values
